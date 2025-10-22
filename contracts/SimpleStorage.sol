@@ -1,12 +1,15 @@
+// EVM, Ethereum Virtual Machine
+// Ethereum, Polygon, Arbitrum, Optimism, Zksynk
+
 // SPDX-License-Identifier: MIT
 pragma solidity ^0.8.24;
 
 contract SimpleStorage {
-    uint256 public favoriteNumber; // 0
+    uint256 public myFavoriteNumber; // 0
 
     // Function store
-    function store(uint256 _favoriteNumber) public {
-        favoriteNumber = _favoriteNumber;
+    function store(uint256 _favoriteNumber) public virtual {
+        myFavoriteNumber = _favoriteNumber;
     }
 
     struct Person {
@@ -24,7 +27,7 @@ contract SimpleStorage {
     // view, pure do not send a tx
     // (in other words they don't spend gas)
     function retrieve() public view returns(uint256) {
-        return favoriteNumber;
+        return myFavoriteNumber;
     }
 
     // calldata, memory -> (temp) storage -> persistent
